@@ -8,6 +8,7 @@ h1 {
 
 .center { text-align:center; }
 .left { text-align:left; }
+.line { border-top:1px solid #ebebeb; }
 
 #generate { text-align:right; }
 
