@@ -1,0 +1,28 @@
+h1. README
+
+This README is a work is progress.
+
+h2. Installation
+
+This application is designed using Sean Corfield's FW/1.  To install simply place this folder at the application root...wherever that may be.
+
+h2. Overview
+
+The goal of this project is to simplify performing migrations on a database through the use of migrations (similar to the rails approach).  The intended workflow will go something like this:
+
+* Fill out basic information about the change you wish to make via the web interface
+* This migration generator will generate a basic stub file for you to update.  The stub will be named as a timestamp cfc file (e.g. 201007150905_12.cfc) that the user can download.  Once downloaded, the user will need to fill in the following information:
+  * sql commands to update the database (called up)
+  * sql commands to reverse the changes they are making (down)
+* User will upload the completed stub file.  They will have the option of requesting that the migration be applied as soon as possible, or at a later date.
+* An administrator will review and approve any completed migrations.  Pushing out a migration will perform the following actions:
+  * Migration as defined by up will be performed on the database
+  * migration name (i.e. stub file name) will be stored in a table called MIGRATIONS along with information about the ticket, the person who created it, and the person who approved it
+* Since down operations are captured, any migration (current or past) can be revoked (which could potentially cause data loss)
+
+h2. Ideas
+
+The following ideas might add additional userfulness to this tool:
+
+* command line interface (via python): allows quick creation of migration requests, ability to upload migration documents, ability to see migration status/history
+* web service: RESTful interface
