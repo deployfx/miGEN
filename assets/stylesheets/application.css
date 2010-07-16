@@ -5,9 +5,30 @@ h1 {
 	background:#ebebeb; 
 	border-bottom:1px solid #dbdbdb;
 }
+
 .center { text-align:center; }
 .left { text-align:left; }
 
-.generate { text-align:right; }
-.generate p { text-align:justify; }
+#generate { text-align:right; }
 
+#generate p { text-align:justify; }
+
+#generate p.button { text-align:center; }
+
+#generate .button a {
+	background: #dbdbdb;
+	padding: 8px 10px 6px;
+	border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	text-decoration: none;
+	font-weight:800;
+	color:#222;
+}
+
+#generate .button a:hover {
+	background: rgba(162,150,150,0.25);
+}
