@@ -1,8 +1,13 @@
-h1 { text-align:center; padding-top:20px; font-size:72px; background:#ebebeb; border-bottom:1px solid #dbdbdb; }
-
-.generate {
-	text-align:right;
+h1 {
+	text-align:center; 
+	padding-top:20px; 
+	font-size:72px; 
+	background:#ebebeb; 
+	border-bottom:1px solid #dbdbdb;
 }
+.center { text-align:center; }
+.left { text-align:left; }
 
-.center {text-align:center;}
-.left {text-align:left;}
+.generate { text-align:right; }
+.generate p { text-align:justify; }
+
