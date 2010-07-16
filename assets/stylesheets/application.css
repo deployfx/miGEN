@@ -1,0 +1,8 @@
+h1 { text-align:center; padding-top:20px; font-size:72px; background:#ebebeb; border-bottom:1px solid #dbdbdb; }
+
+.generate {
+	text-align:right;
+}
+
+.center {text-align:center;}
+.left {text-align:left;}
