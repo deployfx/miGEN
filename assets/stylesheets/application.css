@@ -11,12 +11,14 @@ h1 {
 .line { border-top:1px solid #ebebeb; }
 
 #generate { text-align:right; }
+#generate-left { text-align:left; }
 
-#generate p { text-align:justify; }
+#generate p, #generate-left p { text-align:justify; }
 
 #generate p.button { text-align:center; }
+#generate-left p.button { text-align:right; }
 
-#generate .button a {
+#generate .button a, #generate-left .button a {
 	background: #dbdbdb;
 	padding: 8px 10px 6px;
 	border-radius: 0.4em;
@@ -30,6 +32,6 @@ h1 {
 	color:#222;
 }
 
-#generate .button a:hover {
+#generate .button a:hover, #generate-left .button a:hover {
 	background: rgba(162,150,150,0.25);
 }

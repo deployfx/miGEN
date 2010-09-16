@@ -1,6 +1,6 @@
 component extends="fw" {
 	variables.framework = {
-		defaultItem = 'list',
+		defaultItem = 'start',
 		reloadApplicationOnEveryRequest = true
 	};
 }
