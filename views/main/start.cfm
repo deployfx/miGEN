@@ -18,8 +18,7 @@
 	
     <h2><img src="./assets/img/cookie.png" /> eat a cookie</h2>
 	<p>
-	Everything is good to go and your change will be pushed out as soon as possible.  If any issues arise you 
-    will be contacted.</p>
+	That's it.  If any issues arise I'll let you know.</p>
     
 	<p class="line"></p>
 	

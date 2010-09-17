@@ -13,6 +13,6 @@
 	<p class="line"></p>
 	
 	<p class="button">
-		<cfoutput><a href="#buildURL('main.step2')#">determine the logistics</a></cfoutput>
+        <cfoutput><a href="#buildURL('main.step2')#">next &gt;&gt; determine the logistics</a></cfoutput>
 	</p>
 </div>

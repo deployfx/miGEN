@@ -12,6 +12,6 @@
 	<p class="line"></p>
 	
 	<p class="button">
-		<cfoutput><a href="#buildURL('main.step3')#">propose a fix</a></cfoutput>
+		<cfoutput><a href="#buildURL('main.step3')#">next &gt;&gt; propose a fix</a></cfoutput>
 	</p>
 </div>

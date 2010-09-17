@@ -12,6 +12,6 @@
 	<p class="line"></p>
 	
 	<p class="button">
-		<cfoutput><a href="#buildURL('main.done')#">eat a cookie</a></cfoutput>
+		<cfoutput><a href="#buildURL('main.done')#">next &gt;&gt; confirm your request</a></cfoutput>
 	</p>
 </div>
