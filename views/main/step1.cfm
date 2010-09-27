@@ -15,4 +15,8 @@
 	<p class="button">
         <cfoutput><a href="#buildURL('main.step2')#">next &gt;&gt; determine the logistics</a></cfoutput>
 	</p>
+    
+    <cfset a=EntityLoadByPK("Applications",1) />
+    <cfdump var="#a#" />
+    
 </div>
