@@ -23,6 +23,6 @@
 	<p class="line"></p>
 	
 	<p class="button">
-		<cfoutput><a href="#buildURL('main.step1')#">lets go!</a></cfoutput>
+		<cfoutput><a href="#buildURL('main.change')#">lets go!</a></cfoutput>
 	</p>
 </div>
