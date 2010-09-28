@@ -6,6 +6,7 @@
         <!--- Hold the ID of the current application record --->
         <input name="id" type="hidden" value="<cfoutput>#rc.app.record.getId()#</cfoutput>" />
     
+        <!--- Which application is this for --->
         <div class="field"> 
             <label for="application">Application <em class="required">*</em></label> 
             <select name="application">
@@ -19,14 +20,15 @@
             <a class="help"><span>The application this change pertains to.</span></a> 
             <span class="errorText">For some reason, you made an invalid choice</span> 
         </div> 
-                
+
+        <!--- Any workorder from trackit? --->
         <div class="field"> 
             <label for="ticketNumber">Track-it Ticket # </label> 
             <cfoutput><input id="ticketNumber" name="ticketNumber" size="35" type="text" value="#rc.app.record.getTicketNumber()#" /> </cfoutput>
             <a class="help"><span>If there is a related track-it ticket, enter it here.</span></a> 
         </div> 
         
-        
+        <!--- A description of what this change entails --->
         <div class="field"> 
             <label for="description">Description <em class="required">*</em></label> 
             <textarea id="description" name="description" style="width:550px;height:100px;"><cfoutput>#rc.app.record.getDescription()#</cfoutput></textarea>
@@ -34,6 +36,7 @@
 
         </div> 
         
+        <!--- When does this need to be done --->
         <div class="field"> 
             <label for="due">Due Date  <em class="required">*</em></label> 
             <cfoutput><input class="datepicker" name="due" type="text" value="#DateFormat(rc.app.record.getDue(), 'm/d/yyyy')#" /></cfoutput>

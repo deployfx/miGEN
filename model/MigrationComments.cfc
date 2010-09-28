@@ -3,7 +3,7 @@
  */
 component schema="MIGRATION" table="MC_MIGRATION_COMMENTS" 
 {
-    property name="Id" fieldtype="id" generator="sequence" ormtype="int" params="{sequence='MC_SEQ'}";
+    property name="Id" fieldtype="id" generator="sequence" ormtype="int" params="{schema='MIGRATION',sequence='MC_SEQ'}";
     property name="Migration" fkcolumn="M_ID" cfc="Migrations" fieldtype="one-to-one";
     property name="Comment" column="COMMENT";
     

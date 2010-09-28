@@ -3,7 +3,7 @@
  */
 component schema="MIGRATION" table="A_APPLICATIONS"
 {
-    property name="Id" fieldtype="id" generator="sequence" ormtype="int" params="{sequence='A_SEQ'}";
+    property name="Id" fieldtype="id" generator="sequence" ormtype="int" params="{schema='MIGRATION',sequence='A_SEQ'}";
     property name="Name" column="NAME";
     property name="Steward" column="STEWARD";
     property name="SchemaOwner" column="SCHEMA_OWNER";

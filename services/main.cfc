@@ -31,14 +31,29 @@ component {
     
     // persist to the db!
     function save(id="", application="", ticketNumber="", description="", due=""){
+        // save the app
+        local.ret = {};
+        
         // prepare stub app object
         if( arguments.id == "" ) ret.app = EntityNew("Migrations");
         else ret.app = EntityLoadByPK("Migrations",arguments.id);
         
         try {
-            // issued
-            if( arguments.issued == "" ) ret.app.setIssued(JavaCast("null",""));
-            else ret.app.setIssued(arguments.issued);
+            // which application?
+            if( arguments.application == "" ) ret.app.setApplication(JavaCast("null",""));
+            else ret.app.setApplication(EntityLoadByPK("Applications",arguments.application));
+            
+            // ticket number
+            if( arguments.ticketNumber == "" ) ret.app.setTicketNumber(JavaCast("null",""));
+            else ret.app.setTicketNumber(arguments.ticketNumber);
+            
+            // description
+            if( arguments.description == "" ) ret.app.setDescription(JavaCast("null",""));
+            else ret.app.setDescription(arguments.description);
+            
+            // due date
+            if( arguments.due == "" ) ret.app.setDue(JavaCast("null",""));
+            else ret.app.setDue(arguments.due);
             
             EntitySave(ret.app);
             ormFlush(); // if there is an error, it will be reported asap
@@ -46,6 +61,9 @@ component {
         }
         catch(java.lang.Exception e) {
             // deal with hibernate errors
+            ret.error = {message=e};
         }
+        
+        return ret;
     }
 }

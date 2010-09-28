@@ -28,4 +28,17 @@ component {
         rc.title="Change Request";
         rc.designId="I-7.0";
     }
+    
+    function endSave(any rc){
+        // was there an error?
+        if( !isNull(rc.data.error) ){
+            rc.notice = {type="error", message=rc.data.error.message};
+        } else {
+            rc.notice = {type="success", message="Record saved"};
+        }
+
+        // oki doki, to the page!
+        rc.id = rc.data.app.getId();
+        variables.fw.redirect("main.change","notice","id");
+    }
 }
