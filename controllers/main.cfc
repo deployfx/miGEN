@@ -39,6 +39,6 @@ component {
 
         // oki doki, to the page!
         rc.id = rc.data.app.getId();
-        variables.fw.redirect("main.change","notice","id");
+        variables.fw.redirect("main.files","notice","id");
     }
 }
