@@ -8,6 +8,12 @@ component {
         variables.fw = fw;
     }
 
+    // UPLOAD FUNCTIONALITY
+    function upload(any rc){
+        request.layout = false;
+        getpagecontext().getcfoutput().clearall();
+    }
+    
     // LOADING FUNCTIONS
     private function loadChange(any rc){ // provides us with lookups, app persistent model, and official application name
         // load app dependencies

@@ -14,11 +14,13 @@
 		<link rel="stylesheet" href="assets/stylesheets/application.css" type="text/css" />
         <link rel="stylesheet" href="assets/stylesheets/forms.css" type="text/css" media="screen" title="no title" charset="utf-8" /> 
         <link rel="stylesheet" href="assets/stylesheets/buttons.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+        <link rel="stylesheet" href="assets/stylesheets/fileuploader.css" type="text/css">	
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/cufon-yui.js"></script>
 		<script type="text/javascript" src="assets/javascripts/ChunkFive_400.font.js"></script>
 		<script type="text/javascript" src="assets/javascripts/application.js"></script>
+        <script type="text/javascript" src="assets/javascripts/fileuploader.js"></script>
 	</head>
 	<body>
         <script type="text/javascript">
@@ -26,6 +28,14 @@
                 // dates can be arbitrary, but not too much
                 
                 $(".datepicker").datepicker({ minDate: 0, maxDate: "+1M +10D", noWeekends: true, beforeShowDay: $.datepicker.noWeekends });
+                
+                $(".uploader").each(function() {
+                    // register the file uploader
+                    var uploader = new qq.FileUploader({
+                        element: this,
+                        action: '<cfoutput>#buildURL("main.upload")#</cfoutput>'
+                    });
+                });
             });
         </script>
     

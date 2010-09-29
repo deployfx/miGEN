@@ -8,6 +8,15 @@ component {
 		// do nothing
 	}
     
+    // UPLOAD FUNCTIONALITY
+    function upload(any rc){
+        var ret = {};
+        ret.success = true;
+        
+        return LCase(serializeJSON(ret));
+        
+    }
+    
     // LOOKUP FUNCTIONS
     function lookups(){
         // returns lookups needed by apps
