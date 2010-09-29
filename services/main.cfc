@@ -9,10 +9,10 @@ component {
 	}
     
     // UPLOAD FUNCTIONALITY
-    function upload(any rc){
+    function upload(any fileObj, any qqfile){
         var ret = {};
         ret.success = true;
-        
+        arguments.fileObj.upload(arguments.qqfile, ExpandPath('./assets/migrations/queued'));
         return LCase(serializeJSON(ret));
         
     }

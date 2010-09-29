@@ -8,10 +8,19 @@ component {
         variables.fw = fw;
     }
 
-    // UPLOAD FUNCTIONALITY
-    function upload(any rc){
+    private function blankPage(any rc){
         request.layout = false;
         getpagecontext().getcfoutput().clearall();
+        return;
+    }
+    
+    // UPLOAD FUNCTIONALITY
+    function upload(any rc){
+        blankPage();
+        
+        // certain file operations are not supported in script style
+        // until cf901, so just include it here
+        rc.fileObj = new assets.cfc.file();
     }
     
     // LOADING FUNCTIONS
