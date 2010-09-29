@@ -1,3 +1,4 @@
 *.hbmxml
 Thumbs.db
 *.db
+assets/migrations/*

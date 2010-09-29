@@ -1,26 +1,53 @@
 
 <div class="grid_6" id="generate-left">
 		
-	<h2><img src="./assets/img/logistics.png" /> determine the logistics</h2>
-	
-	<form action="" method="post" id="form" class="stn-form"> 
-        
-        
-        <p></p>
+	<h2><img src="./assets/img/fix.png" /> now, drag and drop the files you'd like to migrate</h2>
     
-        <p class="line"></p>
-        
-        <p class="button">
-            <button class="light-green medium">proceed</button> 
-        </p>
-	</form> 
-    
-    <div class="uploader">		
+    <table width="100%">
+    <thead>
+        <tr>
+            <th>Development</th>
+            <th>Testing</th>
+            <th>Staging</th>
+            <th>Production</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>
+    <div class="uploader" data-stage="development" data-environment="internal">		
 		<noscript>			
 			<p>Please enable JavaScript to use file uploader.</p>
 			<!-- or put a simple form for upload here -->
 		</noscript>         
 	</div>
-    
+    </td>
+    <td>
+    <div class="uploader" data-stage="testing" data-environment="internal">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    <td>
+    <div class="uploader" data-stage="staging" data-environment="internal">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    <td>
+    <div class="uploader" data-stage="production" data-environment="internal">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    </tr>
+    </tbody>
+    </table>
     
 </div>

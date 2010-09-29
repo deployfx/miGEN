@@ -33,7 +33,13 @@
                     // register the file uploader
                     var uploader = new qq.FileUploader({
                         element: this,
-                        action: '<cfoutput>#buildURL("main.upload")#</cfoutput>'
+                        action: '<cfoutput>#buildURL("main.upload")#</cfoutput>',
+                        allowedExtensions: ['sql'],
+                        minSizeLimit: 0, // no empty files!
+                        params: {
+                            stage: $(this).attr('data-stage'),
+                            environment: $(this).attr('data-environment')
+                        }
                     });
                 });
             });
