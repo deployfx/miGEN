@@ -6,6 +6,7 @@
     <table width="100%">
     <thead>
         <tr>
+            <th></th>
             <th>Development</th>
             <th>Testing</th>
             <th>Staging</th>
@@ -14,6 +15,7 @@
     </thead>
     <tbody>
     <tr>
+    <td>Internal</td>
     <td>
     <div class="uploader" data-stage="development" data-environment="internal">		
 		<noscript>			
@@ -40,6 +42,41 @@
     </td>
     <td>
     <div class="uploader" data-stage="production" data-environment="internal">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    </tr>
+    <tr>
+    <td>External</td>
+    <td>
+    <div class="uploader" data-stage="development" data-environment="external">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    <td>
+    <div class="uploader" data-stage="testing" data-environment="external">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    <td>
+    <div class="uploader" data-stage="staging" data-environment="external">		
+		<noscript>			
+			<p>Please enable JavaScript to use file uploader.</p>
+			<!-- or put a simple form for upload here -->
+		</noscript>         
+	</div>
+    </td>
+    <td>
+    <div class="uploader" data-stage="production" data-environment="external">		
 		<noscript>			
 			<p>Please enable JavaScript to use file uploader.</p>
 			<!-- or put a simple form for upload here -->
