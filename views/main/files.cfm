@@ -1,90 +1,33 @@
-
 <div class="grid_6" id="generate-left">
 		
 	<h2><img src="./assets/img/fix.png" /> now, drag and drop the files you'd like to migrate</h2>
     
-    <table width="100%">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Development</th>
-            <th>Testing</th>
-            <th>Staging</th>
-            <th>Production</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>Internal</td>
-    <td>
-    <div class="uploader" data-stage="development" data-environment="internal">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    <td>
-    <div class="uploader" data-stage="testing" data-environment="internal">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    <td>
-    <div class="uploader" data-stage="staging" data-environment="internal">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    <td>
-    <div class="uploader" data-stage="production" data-environment="internal">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    </tr>
-    <tr>
-    <td>External</td>
-    <td>
-    <div class="uploader" data-stage="development" data-environment="external">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    <td>
-    <div class="uploader" data-stage="testing" data-environment="external">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    <td>
-    <div class="uploader" data-stage="staging" data-environment="external">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    <td>
-    <div class="uploader" data-stage="production" data-environment="external">		
-		<noscript>			
-			<p>Please enable JavaScript to use file uploader.</p>
-			<!-- or put a simple form for upload here -->
-		</noscript>         
-	</div>
-    </td>
-    </tr>
-    </tbody>
-    </table>
+    <table id="file-manager" style="width:940px"> 
+		<thead> 
+			<tr> 
+				<th>Environment</th> 
+				<th>Development</th> 
+				<th>Testing</th> 
+				<th>Staging</th> 
+				<th>Production</th> 
+			</tr> 
+		</thead> 
+		<tbody> 
+			<tr data-environment="internal"> 
+				<td class="environment">Internal</td> 
+				<td data-stage="development"></td> 
+				<td data-stage="testing"></td> 
+				<td data-stage="staging"></td> 
+				<td data-stage="production"></td> 
+			</tr> 
+			<tr data-environment="external"> 
+				<td class="environment">External</td> 
+				<td data-stage="development"></td> 
+				<td data-stage="testing"></td> 
+				<td data-stage="staging"></td> 
+				<td data-stage="production"></td> 
+			</tr> 
+		</tbody> 
+	</table>
     
 </div>

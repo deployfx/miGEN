@@ -9,10 +9,10 @@ component {
 	}
     
     // UPLOAD FUNCTIONALITY
-    function upload(any environment, any stage, any fileObj, any qqfile){
+    function upload(string id, any environment, any stage, any fileObj, any qqfile){
         var ret = {};
         ret.success = true;
-        arguments.fileObj.upload(arguments.environment & "_" & arguments.stage & "_" & arguments.qqfile, ExpandPath('./assets/migrations/queued'));
+        arguments.fileObj.upload(arguments.id & "_" & arguments.environment & "_" & arguments.stage & "_" & arguments.qqfile, ExpandPath('./assets/migrations/queued'));
         return LCase(serializeJSON(ret));
         
     }

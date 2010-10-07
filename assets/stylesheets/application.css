@@ -35,3 +35,12 @@ h1 {
 #generate .button a:hover, #generate-left .button a:hover {
 	background: rgba(162,150,150,0.25);
 }
+
+table#file-manager th {
+text-align:left;
+border-bottom:1px solid #e1e1e1;
+}
+
+table#file-manager tbody tr td { width:188px; }
+
+ul.qq-upload-list li { width: 120px; word-wrap:break-word; }
