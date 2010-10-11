@@ -13,7 +13,8 @@
                     stage: $(this).attr('data-stage'),
                     environment: $(this).parent().attr('data-environment'),
                     id: <cfoutput>#rc.id#</cfoutput>
-                }
+                },
+                initialFiles: eval($(this).attr('data-files'))
             });
         });
     });
@@ -21,7 +22,7 @@
 
 <div class="grid_6" id="generate-left">
 		
-	<h2><img src="./assets/img/fix.png" /> now, drag and drop the files you'd like to migrate</h2>
+	<h2><img src="./assets/img/fix.png" /> upload your code</h2>
     
     <table id="file-manager" style="width:940px"> 
 		<thead> 
@@ -36,10 +37,10 @@
 		<tbody> 
 			<tr data-environment="internal"> 
 				<td class="environment">Internal</td> 
-				<td data-stage="development"></td> 
+				<td data-stage="development" data-files="[{name:'upload.sql',size: '27.9k'},{name:'testing.sql',size: '39.1k'}]"></td> 
 				<td data-stage="testing"></td> 
 				<td data-stage="staging"></td> 
-				<td data-stage="production"></td> 
+				<td data-stage="production" data-files="[{name:'upload.sql',size: '27.9k'},{name:'testing.sql',size: '39.1k'}]"></td> 
 			</tr> 
 			<tr data-environment="external"> 
 				<td class="environment">External</td> 
@@ -51,4 +52,9 @@
 		</tbody> 
 	</table>
     
+    <p class="line"></p>
+        
+    <p class="button">
+        <button class="light-green medium" onclick="javascript:window.location='<cfoutput>#buildURL('')#</cfoutput>'">finish</button> 
+    </p>
 </div>

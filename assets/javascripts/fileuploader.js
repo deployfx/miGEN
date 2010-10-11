@@ -258,7 +258,8 @@ qq.FileUploaderBasic = function(o){
         // validation        
         allowedExtensions: [],               
         sizeLimit: 0,   
-        minSizeLimit: 0,                             
+        minSizeLimit: 0,   
+        initialFiles: [], // were there any files already uploaded here?
         // events
         // return false to cancel submit
         onSubmit: function(id, fileName){},
@@ -493,6 +494,7 @@ qq.FileUploader = function(o){
                 '<span class="qq-upload-spinner"></span>' +
                 '<span class="qq-upload-size"></span>' +
                 '<a class="qq-upload-cancel" href="#">Cancel</a>' +
+                '<a class="qq-upload-remove" href="#">Remove</a>' +
                 '<span class="qq-upload-failed-text">Failed</span>' +
             '</li>',        
         
@@ -507,6 +509,7 @@ qq.FileUploader = function(o){
             spinner: 'qq-upload-spinner',
             size: 'qq-upload-size',
             cancel: 'qq-upload-cancel',
+            remove: 'qq-upload-remove',
 
             // added to list item when upload completes
             // used in css to hide progress spinner
@@ -526,7 +529,9 @@ qq.FileUploader = function(o){
     this._button = this._createUploadButton(this._find(this._element, 'button'));        
     
     this._bindCancelEvent();
+    this._bindRemoveEvent();
     this._setupDragDrop();
+    this._addInitialToList(this._options.initialFiles);
 };
 
 // inherit from Basic Uploader
@@ -618,6 +623,22 @@ qq.extend(qq.FileUploader.prototype, {
             qq.addClass(item, this._classes.fail);
         }         
     },
+    _addInitialToList: function(initialFiles){
+        // expect id, fileName, and fileSize for each file
+        var count=0;
+        for( i in initialFiles ){
+            var item = qq.toElement(this._options.fileTemplate);                
+            item.qqFileId = count++;
+
+            qq.setText(this._find(item, 'file'), initialFiles[i].name);
+            qq.setText(this._find(item, 'size'), initialFiles[i].size);
+
+            this._listElement.appendChild(item);
+            qq.remove(this._find(item, 'cancel'));
+            qq.remove(this._find(item, 'spinner'));
+            qq.addClass(item, this._classes.success); 
+        }
+    },
     _addToList: function(id, fileName){
         var item = qq.toElement(this._options.fileTemplate);                
         item.qqFileId = id;
@@ -654,6 +675,24 @@ qq.extend(qq.FileUploader.prototype, {
                
                 var item = target.parentNode;
                 self._handler.cancel(item.qqFileId);
+                qq.remove(item);
+            }
+        });
+    },
+
+    _bindRemoveEvent: function(){
+        var self = this,
+            list = this._listElement;            
+        
+        qq.attach(list, 'click', function(e){            
+            e = e || window.event;
+            var target = e.target || e.srcElement;
+            
+            if (qq.hasClass(target, self._classes.remove)){                
+                qq.preventDefault(e);
+               
+                var item = target.parentNode;
+                self._handler.remove(item.qqFileId);
                 qq.remove(item);
             }
         });
@@ -893,6 +932,13 @@ qq.UploadHandlerAbstract.prototype = {
         this._dequeue(id);
     },
     /**
+     * Removes a file that has already been uploaded
+     */
+    remove: function(id){
+        this._remove(id);
+        this._dequeue(id);
+    },
+    /**
      * Cancells all uploads
      */
     cancelAll: function(){
@@ -923,7 +969,13 @@ qq.UploadHandlerAbstract.prototype = {
     /**
      * Actual cancel method
      */
-    _cancel: function(id){},     
+    _cancel: function(id){}, 
+    /**
+     * Actual remove method
+     */
+    _remove: function(id){
+        // call the remote delete method here
+    },     
     /**
      * Removes element from queue, starts upload of next
      */
