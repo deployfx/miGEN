@@ -26,25 +26,7 @@
         <script type="text/javascript">
             $(function() {
                 // dates can be arbitrary, but not too much
-                
-                $(".datepicker").datepicker({ minDate: 0, maxDate: "+1M +10D", noWeekends: true, beforeShowDay: $.datepicker.noWeekends });
-                
-                $("#file-manager tbody td:not(.environment)").each(function() {
-                    var environment = $(this).parent("tr").attr("data-environment");
-                    var stage = $(this).attr("data-stage");
-                    
-                    new qq.FileUploader({
-                        element: $(this)[0],
-                        action: '<cfoutput>#buildURL("main.upload")#</cfoutput>',
-                        allowedExtensions: ['sql'],
-                        minSizeLimit: 0, // no empty files!
-                        params: {
-                            stage: $(this).attr('data-stage'),
-                            environment: $(this).parent().attr('data-environment'),
-                            id: <cfoutput>#rc.id#</cfoutput>
-                        }
-                    });
-                });
+                $(".datepicker").datepicker({ minDate: 0, maxDate: "+1M +10D", beforeShowDay: $.datepicker.noWeekends });
             });
         </script>
     
