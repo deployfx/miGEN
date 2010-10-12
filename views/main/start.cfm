@@ -1,4 +1,3 @@
-<cfdump var="#this.user#" />
 <div class="grid_6" id="generate">
 		
 	<h2><img src="./assets/img/logistics.png" /> what needs to be done?</h2>
