@@ -45,25 +45,12 @@ component {
     }
     
     function linkTo(string location, string id=""){
-        // returns a URL to a DPR point of interest
+        // returns a link to a point of interest
         
         // INTERNAL places we can go
-        if( request.context.isInternal ){
-            local.locations = {
-                "TrackingSystem"="http://registration/track/reports/trackid_action.cfm?RequestTimeout=500&track_id=",
-                "Label"="./assets/registration/labels/",
-                "LabelUpload"="./assets/registration/labels/",
-                "Chemical"="http://apps.cdpr.ca.gov/cgi-bin/mon/bycode.pl?p_chemcode=",
-                "Product"="http://registration/label/cgi-bin/nl/pir.pl?p_prodno="
-            };
-        } else {
-            // EXTERNAL Places we can go
-            local.locations = {
-                "Label"="http://www.cdpr.ca.gov/docs/label/pdf/sln/",
-                "Chemical"="http://apps.cdpr.ca.gov/cgi-bin/mon/bycode.pl?p_chemcode=",
-                "Product"="http://apps.cdpr.ca.gov/cgi-bin/label/label.pl?typ=pir&prodno="
-            };
-        }
+        local.locations = {
+            "Somewhere"="http://127.0.0.1"
+        };
         
         return locations[arguments.location] & arguments.id;
     }
