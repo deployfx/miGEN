@@ -56,6 +56,6 @@
     <p class="line"></p>
         
     <p class="button">
-        <button class="light-green medium" onclick="javascript:window.location='<cfoutput>#buildURL('')#</cfoutput>'">finish</button> 
+        <button class="light-green medium" onclick="javascript:window.location='<cfoutput>#buildURL('main.done&id=' & rc.id)#</cfoutput>'">Summary</button> 
     </p>
 </div>

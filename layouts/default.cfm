@@ -21,12 +21,20 @@
 		<script type="text/javascript" src="assets/javascripts/ChunkFive_400.font.js"></script>
 		<script type="text/javascript" src="assets/javascripts/application.js"></script>
         <script type="text/javascript" src="assets/javascripts/fileuploader.js"></script>
+        
+        <script type="text/javascript" src="assets/javascripts/shCore.js"></script>
+        <script type="text/javascript" src="assets/javascripts/shBrushSql.js"></script>
+        <link href="assets/stylesheets/shCore.css" rel="stylesheet" type="text/css" />
+        <link href="assets/stylesheets/shThemeDefault.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
         <script type="text/javascript">
             $(function() {
                 // dates can be arbitrary, but not too much
                 $(".datepicker").datepicker({ minDate: 0, maxDate: "+1M +10D", beforeShowDay: $.datepicker.noWeekends });
+                
+                // enable syntax highlighting
+                SyntaxHighlighter.all()
             });
         </script>
     

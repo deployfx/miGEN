@@ -9,13 +9,14 @@ component {
 	}
     
     // DIRECTORY LISTING FUNCTIONALITY
-    function directoryListing(id, directory, pattern){
+    function directoryListing(id, directory, pattern, json=true){
         var dirs = DirectoryList(arguments.directory,false,"query",id & "_" & arguments.pattern,"datelastmodified");
         var ret = [];
         for( i=1; i <= dirs.RecordCount; i++ ){
-            ArrayAppend(ret,{name=dirs.NAME[i],size=dirs.SIZE[i]});
+            ArrayAppend(ret,{name=dirs.NAME[i],size=dirs.SIZE[i],lastmodified=dirs.DATELASTMODIFIED[i]});
         }
-        return LCase(serializeJSON(ret));
+        if(arguments.json) return LCase(serializeJSON(ret));
+        else return ret;
     }
     
     // UPLOAD FUNCTIONALITY

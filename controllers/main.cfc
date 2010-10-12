@@ -39,6 +39,19 @@ component {
         
         // load the app
         variables.fw.service("main.get","app");
+        if( StructKeyExists(rc,"id") ){
+			// load the app related files
+			rc.directory = ExpandPath('./assets/migrations/queued');
+			variables.fw.service("main.directoryListing","int_development",{pattern="internal_development_*.sql"});
+			variables.fw.service("main.directoryListing","int_testing",{pattern="internal_testing_*.sql"});
+			variables.fw.service("main.directoryListing","int_staging",{pattern="internal_staging_*.sql"});
+			variables.fw.service("main.directoryListing","int_production",{pattern="internal_production_*.sql"});
+			variables.fw.service("main.directoryListing","ext_development",{pattern="external_development_*.sql"});
+			variables.fw.service("main.directoryListing","ext_testing",{pattern="external_testing_*.sql"});
+			variables.fw.service("main.directoryListing","ext_staging",{pattern="external_staging_*.sql"});
+			variables.fw.service("main.directoryListing","ext_production",{pattern="external_production_*.sql"});
+			variables.fw.service("main.directoryListing","changeFiles",{pattern="*.sql"});
+		}
     }
 
 	function start(any rc) {
@@ -66,16 +79,18 @@ component {
         variables.fw.redirect("main.files","notice","id");
     }
     
-    function startFiles(any rc){
-        // Setup the calls to find the files, if any exist
-        rc.directory = ExpandPath('./assets/migrations/queued');
-        variables.fw.service("main.directoryListing","int_development",{pattern="internal_development_*.sql"});
-        variables.fw.service("main.directoryListing","int_testing",{pattern="internal_testing_*.sql"});
-        variables.fw.service("main.directoryListing","int_staging",{pattern="internal_staging_*.sql"});
-        variables.fw.service("main.directoryListing","int_production",{pattern="internal_production_*.sql"});
-        variables.fw.service("main.directoryListing","ext_development",{pattern="external_development_*.sql"});
-        variables.fw.service("main.directoryListing","ext_testing",{pattern="external_testing_*.sql"});
-        variables.fw.service("main.directoryListing","ext_staging",{pattern="external_staging_*.sql"});
-        variables.fw.service("main.directoryListing","ext_production",{pattern="external_production_*.sql"});
+    function files(any rc){
+        loadChange(rc);
+    
+        rc.title="Upload Files";
+        rc.designId="I-7.0";
+    }
+    
+    function done(any rc){
+        rc.json = false; // we don't want anything returned in json format!
+        loadChange(rc);
+    
+        rc.title="Order Summary";
+        rc.designId="I-7.0";
     }
 }
