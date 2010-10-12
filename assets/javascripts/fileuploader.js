@@ -251,6 +251,7 @@ var qq = qq || {};
 qq.FileUploaderBasic = function(o){
     this._options = {
         action: '/server/upload',
+        removeAction: 'server/remove',
         params: {},
         button: null,
         multiple: true,
@@ -321,6 +322,7 @@ qq.FileUploaderBasic.prototype = {
 
         var handler = new qq[handlerClass]({
             action: this._options.action,         
+            removeAction: this._options.removeAction,
             maxConnections: this._options.maxConnections,   
             onProgress: function(id, fileName, loaded, total){                
                 self._onProgress(id, fileName, loaded, total);
@@ -388,7 +390,7 @@ qq.FileUploaderBasic.prototype = {
     },       
     _uploadFile: function(fileContainer){      
         var id = this._handler.add(fileContainer);
-        var fileName = this._handler.getName(id);
+        var fileName = this._options.params.prefix + "_" + this._handler.getName(id);
         
         if (this._options.onSubmit(id, fileName) !== false){
             this._onSubmit(id, fileName);
@@ -599,6 +601,7 @@ qq.extend(qq.FileUploader.prototype, {
         var item = this._getItemByFileId(id);
         var size = this._find(item, 'size');
         size.style.display = 'inline';
+        this._find(item, 'remove').style.display = 'none';
         
         var text; 
         if (loaded != total){
@@ -618,21 +621,25 @@ qq.extend(qq.FileUploader.prototype, {
         qq.remove(this._find(item, 'spinner'));
         
         if (result.success){
-            qq.addClass(item, this._classes.success);    
+            qq.addClass(item, this._classes.success); 
+            this._find(item, 'remove').style.display = 'inline';
         } else {
             qq.addClass(item, this._classes.fail);
         }         
     },
     _addInitialToList: function(initialFiles){
         // expect id, fileName, and fileSize for each file
-        var count=0;
+        var count = 0;
+        
         for( i in initialFiles ){
             var item = qq.toElement(this._options.fileTemplate);                
             item.qqFileId = count++;
 
             qq.setText(this._find(item, 'file'), initialFiles[i].name);
             qq.setText(this._find(item, 'size'), initialFiles[i].size);
-
+            
+            this._handler.push(initialFiles[i].name);
+            
             this._listElement.appendChild(item);
             qq.remove(this._find(item, 'cancel'));
             qq.remove(this._find(item, 'spinner'));
@@ -974,7 +981,9 @@ qq.UploadHandlerAbstract.prototype = {
      * Actual remove method
      */
     _remove: function(id){
-        // call the remote delete method here
+        $.getJSON(this._options.removeAction,{qqfile:this.getName(id)},function(json){
+            console.log("%o",json);
+        });
     },     
     /**
      * Removes element from queue, starts upload of next
@@ -1181,17 +1190,27 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
      * Adds file to the queue
      * Returns id to use with upload, cancel
      **/    
+    push: function(str){
+        return this._files.push(str);
+    },
     add: function(file){
         if (!(file instanceof File)){
             throw new Error('Passed obj in not a File (in qq.UploadHandlerXhr)');
         }
-                
+
         return this._files.push(file) - 1;        
     },
-    getName: function(id){        
+    getName: function(id){
+        var filename;
         var file = this._files[id];
-        // fix missing name in Safari 4
-        return file.fileName != null ? file.fileName : file.name;       
+        if (file instanceof File){
+            // fix missing name in Safari 4
+            filename = file.fileName != null ? file.fileName : file.name;
+            return filename
+        } else {
+            // otherwise it was a string that we pushed earlier
+            return file;
+        }
     },
     getSize: function(id){
         var file = this._files[id];
@@ -1264,8 +1283,8 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
         } else {                   
             this._options.onComplete(id, name, {});
         }
-                
-        this._files[id] = null;
+
+        this._files[id] = this._params[id].prefix + '_' + this.getName(id);
         this._xhrs[id] = null;    
         this._dequeue(id);                    
     },

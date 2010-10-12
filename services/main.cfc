@@ -9,12 +9,19 @@ component {
 	}
     
     // UPLOAD FUNCTIONALITY
-    function upload(string id, any environment, any stage, any fileObj, any qqfile){
+    function upload(string prefix, any fileObj, any qqfile){
         var ret = {};
         ret.success = true;
-        arguments.fileObj.upload(arguments.id & "_" & arguments.environment & "_" & arguments.stage & "_" & arguments.qqfile, ExpandPath('./assets/migrations/queued'));
+        ret.filename = arguments.prefix & "_" & arguments.qqfile;
+        arguments.fileObj.upload(ret.filename, ExpandPath('./assets/migrations/queued'));
         return LCase(serializeJSON(ret));
-        
+    }
+    
+    // REMOVE UPLOAD FILE FUNCTIONALITY
+    function remove(string filename, any fileObj){
+        var ret = {};
+        ret.success = arguments.fileObj.remove(ExpandPath('./assets/migrations/queued'), arguments.qqfile);
+        return LCase(serializeJSON(ret));
     }
     
     // LOOKUP FUNCTIONS

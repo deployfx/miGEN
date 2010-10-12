@@ -1,6 +1,20 @@
 <!--- This function was provided in CF901.  When we update to 901 this can be removed --->
 <cfcomponent hint="I handle AJAX File Uploads from Valum's AJAX file uploader library">
 
+    <cffunction name="remove" access="remote" returnformat="json">
+        <cfargument name="location" type="string" required="true">
+        <cfargument name="qqfile" type="string" required="true" />
+        
+        <cftry>
+            <cffile action="delete" file="#arguments.location#\#arguments.qqfile#" />
+            <cfreturn true>
+            
+            <cfcatch type="any">
+                <cfreturn true>
+            </cfcatch>
+        </cftry>
+    </cffunction>
+
     <cffunction name="Upload" access="remote" output="false" returntype="any" returnformat="JSON" >
         <cfargument name="qqfile" type="string" required="true">
         <cfargument name="destination" type="string" required="true" />

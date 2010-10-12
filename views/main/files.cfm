@@ -7,12 +7,11 @@
             new qq.FileUploader({
                 element: $(this)[0],
                 action: '<cfoutput>#buildURL("main.upload")#</cfoutput>',
+                removeAction: '<cfoutput>#buildURL("main.remove")#</cfoutput>',
                 allowedExtensions: ['sql'],
                 minSizeLimit: 0, // no empty files!
                 params: {
-                    stage: $(this).attr('data-stage'),
-                    environment: $(this).parent().attr('data-environment'),
-                    id: <cfoutput>#rc.id#</cfoutput>
+                    prefix: '<cfoutput>#rc.id#</cfoutput>' + '_' + $(this).parent().attr('data-environment') + '_' + $(this).attr('data-stage')
                 },
                 initialFiles: eval($(this).attr('data-files'))
             });
@@ -24,7 +23,7 @@
 		
 	<h2><img src="./assets/img/fix.png" /> upload your code</h2>
     
-    <table id="file-manager" style="width:940px"> 
+    <table id="file-manager"> 
 		<thead> 
 			<tr> 
 				<th>Environment</th> 

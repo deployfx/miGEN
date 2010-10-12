@@ -23,6 +23,15 @@ component {
         rc.fileObj = new assets.cfc.file();
     }
     
+    // REMOVE FUNCTIONALITY
+    function remove(any rc){
+        blankPage();
+        
+        // certain file operations are not supported in script style
+        // until cf901, so just include it here
+        rc.fileObj = new assets.cfc.file();
+    }
+    
     // LOADING FUNCTIONS
     private function loadChange(any rc){ // provides us with lookups, app persistent model, and official application name
         // load app dependencies

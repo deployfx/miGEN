@@ -36,11 +36,13 @@ h1 {
 	background: rgba(162,150,150,0.25);
 }
 
+table#file-manager { width:940px; }
+
 table#file-manager th {
 text-align:left;
 border-bottom:1px solid #e1e1e1;
 }
 
-table#file-manager tbody tr td { width:188px; }
+table#file-manager tbody tr td { width:188px; height:150px; }
 
 ul.qq-upload-list li { width: 120px; word-wrap:break-word; }
