@@ -42,8 +42,9 @@ component extends="assets.cfc.framework" {
 		}
         
         // if the user object isn't there, create one
+        // not yet a useful feature
         if( isNull(this.user) ){
-            this.user = createObject('component','common_cfc.ldap_security.ldap').getUser(reReplaceNoCase(cgi.auth_user,'DPRNTDOM\\',''));
+            this.user = createObject('component','common_cfc.ldap_security.ldap').getUser(reReplaceNoCase(cgi.auth_user,this.config.DOMAIN,''));
         }
 	}
 }
