@@ -1,1 +1,1 @@
-<cfdump var="#rc.data#" />
+<cfoutput>#rc.data#</cfoutput>

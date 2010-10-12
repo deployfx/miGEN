@@ -8,6 +8,16 @@ component {
 		// do nothing
 	}
     
+    // DIRECTORY LISTING FUNCTIONALITY
+    function directoryListing(id, directory, pattern){
+        var dirs = DirectoryList(arguments.directory,false,"query",id & "_" & arguments.pattern,"datelastmodified");
+        var ret = [];
+        for( i=1; i <= dirs.RecordCount; i++ ){
+            ArrayAppend(ret,{name=dirs.NAME[i],size=dirs.SIZE[i]});
+        }
+        return LCase(serializeJSON(ret));
+    }
+    
     // UPLOAD FUNCTIONALITY
     function upload(string prefix, any fileObj, any qqfile){
         var ret = {};

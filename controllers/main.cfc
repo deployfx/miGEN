@@ -65,4 +65,17 @@ component {
         rc.id = rc.data.app.getId();
         variables.fw.redirect("main.files","notice","id");
     }
+    
+    function startFiles(any rc){
+        // Setup the calls to find the files, if any exist
+        rc.directory = ExpandPath('./assets/migrations/queued');
+        variables.fw.service("main.directoryListing","int_development",{pattern="internal_development_*.sql"});
+        variables.fw.service("main.directoryListing","int_testing",{pattern="internal_testing_*.sql"});
+        variables.fw.service("main.directoryListing","int_staging",{pattern="internal_staging_*.sql"});
+        variables.fw.service("main.directoryListing","int_production",{pattern="internal_production_*.sql"});
+        variables.fw.service("main.directoryListing","ext_development",{pattern="external_development_*.sql"});
+        variables.fw.service("main.directoryListing","ext_testing",{pattern="external_testing_*.sql"});
+        variables.fw.service("main.directoryListing","ext_staging",{pattern="external_staging_*.sql"});
+        variables.fw.service("main.directoryListing","ext_production",{pattern="external_production_*.sql"});
+    }
 }

@@ -34,20 +34,22 @@
 			</tr> 
 		</thead> 
 		<tbody> 
+            <cfoutput>
 			<tr data-environment="internal"> 
 				<td class="environment">Internal</td> 
-				<td data-stage="development" data-files="[{name:'upload.sql',size: '27.9k'},{name:'testing.sql',size: '39.1k'}]"></td> 
-				<td data-stage="testing"></td> 
-				<td data-stage="staging"></td> 
-				<td data-stage="production" data-files="[{name:'upload.sql',size: '27.9k'},{name:'testing.sql',size: '39.1k'}]"></td> 
+				<td data-stage="development" data-files='#rc.int_development#'></td> 
+				<td data-stage="testing" data-files='#rc.int_testing#'></td> 
+				<td data-stage="staging" data-files='#rc.int_staging#'></td> 
+				<td data-stage="production" data-files='#rc.int_production#'></td> 
 			</tr> 
 			<tr data-environment="external"> 
 				<td class="environment">External</td> 
-				<td data-stage="development"></td> 
-				<td data-stage="testing"></td> 
-				<td data-stage="staging"></td> 
-				<td data-stage="production"></td> 
+				<td data-stage="development" data-files='#rc.ext_development#'></td> 
+				<td data-stage="testing" data-files='#rc.ext_testing#'></td> 
+				<td data-stage="staging" data-files='#rc.ext_staging#'></td> 
+				<td data-stage="production" data-files='#rc.ext_production#'></td> 
 			</tr> 
+            </cfoutput>
 		</tbody> 
 	</table>
     
